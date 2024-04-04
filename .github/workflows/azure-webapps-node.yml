@@ -1,0 +1,15 @@
+name: Upload To Azure Blob Storage
+on:
+  push:
+    branches:
+      - main
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bacongobbler/azure-blob-storage-upload@main
+        with:
+          source_dir: dist
+          container_name: reactapp
+          overwrite: 'true'
